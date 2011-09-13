@@ -21,6 +21,7 @@ namespace GameGraphics.WinFormsPictureBoxes
             var image = Image.FromFile(imagePath);
             var pictureBox = new PictureBox { Image = image, Width = _options.TileWidth, Height = _options.TileHeight };
             Controls.Add(pictureBox);
+            Controls.SetChildIndex(pictureBox, 0);
             return new PictureBoxSprite(pictureBox, _options);
         }
     }
