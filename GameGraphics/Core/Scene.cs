@@ -33,21 +33,24 @@ namespace GameGraphics.Core
         }
         public IView View { get; private set; }
 
+        private ISprite CreateSprite(string fileName, double x = 0, double y = 0)
+        {
+            var sprite = View.CreateSprite(Path.Combine(_options.ImageDirectory, fileName));
+            sprite.X = x;
+            sprite.Y = y;
+            return sprite;
+        }
         public void Initialize(IView view)
         {
             View = view;
             for (var y = 0; y < 14; ++y)
             {
                 for (var x = 0; x < 16; ++x)
-                {
-                    var sprite = View.CreateSprite(Path.Combine(_options.ImageDirectory, "BackgroundTile.bmp"));
-                    sprite.X = x;
-                    sprite.Y = y;
-                }
+                    CreateSprite("BackgroundTile.bmp", x, y);
             }
-            _sprites.Add(View.CreateSprite(Path.Combine(_options.ImageDirectory, "Hero.png")));
+            _sprites.Add(CreateSprite("Hero.png"));
             for (var index = 0; index < 19; ++index)
-                _sprites.Add(View.CreateSprite(Path.Combine(_options.ImageDirectory, "Enemy.png")));
+                _sprites.Add(CreateSprite("Enemy.png"));
         }
         private void SetSpritePosition(ISprite sprite, double position)
         {
