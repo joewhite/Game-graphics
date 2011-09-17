@@ -48,6 +48,25 @@ namespace GameGraphics.Core
                 for (var x = 0; x < 16; ++x)
                     CreateSprite("BackgroundTile.bmp", x, y);
             }
+            CreateSprite("TopLeft.png", 0, 0);
+            CreateSprite("TopRight.png", 15, 0);
+            CreateSprite("BottomLeft.png", 0, 13);
+            CreateSprite("BottomRight.png", 15, 13);
+            for (var x = 1; x <= 14; ++x)
+            {
+                CreateSprite("Horizontal.png", x, 0);
+                CreateSprite("Horizontal.png", x, 13);
+            }
+            for (var y = 1; y <= 12; ++y)
+            {
+                CreateSprite("Vertical.png", 0, y);
+                CreateSprite("Vertical.png", 15, y);
+            }
+            for (var y = 1; y <= 12; ++y)
+            {
+                for (var x = 1; x <= 14; ++x)
+                    CreateSprite("Dot.png", x, y);
+            }
             _sprites.Add(CreateSprite("Hero.png"));
             for (var index = 0; index < 19; ++index)
                 _sprites.Add(CreateSprite("Enemy.png"));
