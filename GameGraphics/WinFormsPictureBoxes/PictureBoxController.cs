@@ -18,7 +18,7 @@ namespace GameGraphics.WinFormsPictureBoxes
         {
             using (var form = new GraphicsForm(scene))
             {
-                var view = new PictureBoxView(scene, options);
+                var view = new PictureBoxView(options);
                 scene.Initialize(view);
                 form.SetView(view);
                 form.ShowDialog();

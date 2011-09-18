@@ -7,11 +7,9 @@ namespace GameGraphics.WinFormsPictureBoxes
     public partial class PictureBoxView : UserControl, IView
     {
         private readonly SceneOptions _options;
-        private readonly Scene _scene;
 
-        public PictureBoxView(Scene scene, SceneOptions options)
+        public PictureBoxView(SceneOptions options)
         {
-            _scene = scene;
             _options = options;
             InitializeComponent();
         }
