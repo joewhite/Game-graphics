@@ -6,15 +6,27 @@
         SnapsToDevicePixels="True"
         WindowStartupLocation="CenterScreen">
     <DockPanel Margin="5">
-        <GroupBox Margin="5"
-                  DockPanel.Dock="Top"
-                  Header="WinForms">
-            <StackPanel Margin="8 8 8 6">
-                <RadioButton Content="PictureBoxes"
-                             IsChecked="True" />
-            </StackPanel>
-        </GroupBox>
-        <Button DockPanel.Dock="Top"
+        <ItemsControl x:Name="ControllerGroups"
+                      Margin="5"
+                      DockPanel.Dock="Top">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <GroupBox Header="{Binding Key}">
+                        <ItemsControl Margin="8 8 8 6"
+                                      ItemsSource="{Binding}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Content="{Binding Description}"
+                                                 IsChecked="{Binding IsChecked}"
+                                                 GroupName="Controller" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </GroupBox>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+            <Button DockPanel.Dock="Top"
                 Margin="5"
                 Content="Run"
                 MinWidth="75"

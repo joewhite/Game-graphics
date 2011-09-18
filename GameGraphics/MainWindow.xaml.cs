@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
@@ -11,10 +13,20 @@ namespace GameGraphics
 {
     public partial class MainWindow
     {
+        private IList<ControllerViewModel> _allControllerViewModels;
+
         public MainWindow()
         {
             InitializeComponent();
             Loaded += (sender, e) => ClearValue(SizeToContentProperty);
+            _allControllerViewModels =
+                (from type in GetType().Assembly.GetTypes()
+                 where !type.IsInterface && typeof(IController).IsAssignableFrom(type)
+                 let viewModel = new ControllerViewModel((IController)Activator.CreateInstance(type))
+                 orderby viewModel.Library, viewModel.Description
+                 select viewModel).ToList();
+            _allControllerViewModels.First().IsChecked = true;
+            ControllerGroups.ItemsSource = _allControllerViewModels.GroupBy(viewModel => viewModel.Library);
         }
 
         private void LogResults(IController controller, Scene scene)
@@ -40,7 +52,8 @@ namespace GameGraphics
         }
         private void Run()
         {
-            var controller = new PictureBoxController();
+            var viewModel = _allControllerViewModels.First(vm => vm.IsChecked);
+            var controller = viewModel.Controller;
             Run(controller);
         }
         private void Run(IController controller)

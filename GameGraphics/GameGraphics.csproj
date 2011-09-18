@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ControllerViewModel.cs" />
     <Compile Include="Core\IController.cs" />
     <Compile Include="Core\Library.cs" />
     <Compile Include="WinFormsCommon\GraphicsForm.cs">
