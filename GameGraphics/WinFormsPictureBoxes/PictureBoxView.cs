@@ -24,5 +24,8 @@ namespace GameGraphics.WinFormsPictureBoxes
             Controls.SetChildIndex(pictureBox, 0);
             return new PictureBoxSprite(pictureBox, _options);
         }
+        public void FrameCompleted()
+        {
+        }
     }
 }

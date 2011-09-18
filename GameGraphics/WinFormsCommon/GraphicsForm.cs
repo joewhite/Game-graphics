@@ -28,8 +28,9 @@ namespace GameGraphics.WinFormsCommon
         }
         private void timer1_Tick(object sender, System.EventArgs e)
         {
-            _scene.Update(_stopwatch.Elapsed);
+            var elapsed = _stopwatch.Elapsed;
             _stopwatch.Restart();
+            _scene.Update(elapsed);
         }
     }
 }

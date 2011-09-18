@@ -114,6 +114,7 @@ namespace GameGraphics.Core
                 spritePosition -= delta;
                 delta = 1;
             }
+            View.FrameCompleted();
         }
     }
 }

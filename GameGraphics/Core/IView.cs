@@ -3,5 +3,6 @@
     public interface IView
     {
         ISprite CreateSprite(string imagePath);
+        void FrameCompleted();
     }
 }

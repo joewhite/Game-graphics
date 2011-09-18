@@ -66,6 +66,15 @@
     <Compile Include="WinFormsCommon\GraphicsForm.Designer.cs">
       <DependentUpon>GraphicsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsCommon\ImageLibrary.cs" />
+    <Compile Include="WinFormsCustomPainting\CustomPaintController.cs" />
+    <Compile Include="WinFormsCustomPainting\CustomPaintSprite.cs" />
+    <Compile Include="WinFormsCustomPainting\CustomPaintView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinFormsCustomPainting\CustomPaintView.Designer.cs">
+      <DependentUpon>CustomPaintView.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsPictureBoxes\PictureBoxSprite.cs" />
     <Compile Include="WinFormsPictureBoxes\PictureBoxView.cs">
       <SubType>UserControl</SubType>
