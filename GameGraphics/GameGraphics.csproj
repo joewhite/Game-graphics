@@ -60,6 +60,7 @@
     <Compile Include="ControllerViewModel.cs" />
     <Compile Include="Core\IController.cs" />
     <Compile Include="Core\Library.cs" />
+    <Compile Include="Core\ProcessCpuUsage.cs" />
     <Compile Include="WinFormsCommon\GraphicsForm.cs">
       <SubType>Form</SubType>
     </Compile>

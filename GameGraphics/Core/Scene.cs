@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace GameGraphics.Core
 {
     public class Scene
     {
-        private double? _initialProcessorTime;
         private readonly SceneOptions _options;
         private double _position;
         private Stopwatch _runTime = new Stopwatch();
@@ -16,21 +16,17 @@ namespace GameGraphics.Core
         public Scene(SceneOptions options)
         {
             _options = options;
+            CpuUsageSelf = new ProcessCpuUsage(Process.GetCurrentProcess());
+            CpuUsageDwm = new ProcessCpuUsage(Process.GetProcessesByName("dwm").FirstOrDefault());
         }
 
-        public double CurrentProcessorTime
-        {
-            get { return Process.GetCurrentProcess().TotalProcessorTime.TotalSeconds / Environment.ProcessorCount; }
-        }
+        public ProcessCpuUsage CpuUsageDwm { get; private set; }
+        public ProcessCpuUsage CpuUsageSelf { get; private set; }
         public TimeSpan Elapsed
         {
             get { return _runTime.Elapsed; }
         }
         public int FrameCount { get; private set; }
-        public double InitialProcessorTime
-        {
-            get { return _initialProcessorTime ?? 0; }
-        }
         public IView View { get; private set; }
 
         private ISprite CreateSprite(string fileName, double x = 0, double y = 0)
@@ -101,8 +97,8 @@ namespace GameGraphics.Core
         public void Update(TimeSpan elapsed)
         {
             _runTime.Start();
-            if (_initialProcessorTime == null)
-                _initialProcessorTime = CurrentProcessorTime;
+            CpuUsageSelf.Initialize();
+            CpuUsageDwm.Initialize();
             ++FrameCount;
 
             _position += elapsed.TotalSeconds * 3;

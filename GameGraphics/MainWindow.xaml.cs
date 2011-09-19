@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -13,7 +14,7 @@ namespace GameGraphics
 {
     public partial class MainWindow
     {
-        private IList<ControllerViewModel> _allControllerViewModels;
+        private readonly IList<ControllerViewModel> _allControllerViewModels;
 
         public MainWindow()
         {
@@ -33,9 +34,8 @@ namespace GameGraphics
         {
             var elapsed = scene.Elapsed;
             var fps = scene.FrameCount / elapsed.TotalSeconds;
-            var cpu = (scene.CurrentProcessorTime - scene.InitialProcessorTime) / elapsed.TotalSeconds * 100;
-            var status = string.Format("{0} {1} ({2:n1}s): {3:n1} fps, {4:n1}% CPU",
-                controller.Library, controller.Description, elapsed.TotalSeconds, fps, cpu);
+            var status = string.Format("{0} {1} ({2:n1}s): {3:n1} fps, CPU: {4} self, {5} DWM",
+                controller.Library, controller.Description, elapsed.TotalSeconds, fps, scene.CpuUsageSelf, scene.CpuUsageDwm);
             var text = Log.Text;
             if (!string.IsNullOrEmpty(text))
                 text += Environment.NewLine;
