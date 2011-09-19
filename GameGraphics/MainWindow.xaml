@@ -32,15 +32,68 @@
                 MinWidth="75"
                 HorizontalAlignment="Center"
                 Click="RunClick" />
-        <GroupBox Margin="5"
-                  Header="Log">
-            <TextBox x:Name="Log"
-                     Margin="5"
-                     MinLines="4"
-                     MinWidth="300"
-                     BorderThickness="0"
-                     IsReadOnly="True"
-                     VerticalScrollBarVisibility="Auto" />
-        </GroupBox>
+        <ListView x:Name="RunResults"
+                  Margin="5"
+                  MinHeight="200"
+                  MinWidth="492">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="140"
+                                    Header="Description"
+                                    DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Width="45"
+                                    Header="Time">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Right"
+                                           Text="{Binding Time}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="40"
+                                    Header="FPS">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Right"
+                                           Text="{Binding FramesPerSecond}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80"
+                                    Header="CPU (self)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Right"
+                                           Text="{Binding CpuSelf}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80"
+                                    Header="CPU (DWM)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Right"
+                                           Text="{Binding CpuDwm}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80"
+                                    Header="CPU (total)">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Right"
+                                           Text="{Binding CpuTotal}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </DockPanel>
 </Window>

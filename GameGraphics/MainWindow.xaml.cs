@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace GameGraphics
     public partial class MainWindow
     {
         private readonly IList<ControllerViewModel> _allControllerViewModels;
+        private readonly ObservableCollection<RunResults> _runResults = new ObservableCollection<RunResults>();
 
         public MainWindow()
         {
@@ -28,19 +30,17 @@ namespace GameGraphics
                  select viewModel).ToList();
             _allControllerViewModels.First().IsChecked = true;
             ControllerGroups.ItemsSource = _allControllerViewModels.GroupBy(viewModel => viewModel.Library);
+            RunResults.ItemsSource = _runResults;
         }
 
         private void LogResults(IController controller, Scene scene)
         {
             var elapsed = scene.Elapsed;
             var fps = scene.FrameCount / elapsed.TotalSeconds;
-            var status = string.Format("{0} {1} ({2:n1}s): {3:n1} fps, CPU: {4} self, {5} DWM",
-                controller.Library, controller.Description, elapsed.TotalSeconds, fps, scene.CpuUsageSelf, scene.CpuUsageDwm);
-            var text = Log.Text;
-            if (!string.IsNullOrEmpty(text))
-                text += Environment.NewLine;
-            text += status;
-            Log.Text = text;
+            var results = new RunResults(
+                controller.Library + " " + controller.Description,
+                elapsed, fps, scene.CpuUsageSelf.Cpu, scene.CpuUsageDwm.Cpu);
+            _runResults.Add(results);
         }
         protected override void OnKeyDown(KeyEventArgs e)
         {
