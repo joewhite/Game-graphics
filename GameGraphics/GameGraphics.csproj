@@ -61,6 +61,7 @@
     <Compile Include="Core\IController.cs" />
     <Compile Include="Core\Library.cs" />
     <Compile Include="Core\ProcessCpuUsage.cs" />
+    <Compile Include="ResolutionViewModel.cs" />
     <Compile Include="RunResults.cs" />
     <Compile Include="WinFormsCommon\GraphicsForm.cs">
       <SubType>Form</SubType>

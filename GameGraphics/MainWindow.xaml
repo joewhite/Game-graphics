@@ -6,27 +6,42 @@
         SnapsToDevicePixels="True"
         WindowStartupLocation="CenterScreen">
     <DockPanel Margin="5">
-        <ItemsControl x:Name="ControllerGroups"
-                      Margin="5"
-                      DockPanel.Dock="Top">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <GroupBox Header="{Binding Key}">
-                        <ItemsControl Margin="8 8 8 6"
-                                      ItemsSource="{Binding}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <RadioButton Content="{Binding Description}"
-                                                 IsChecked="{Binding IsChecked}"
-                                                 GroupName="Controller" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </GroupBox>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-            <Button DockPanel.Dock="Top"
+        <UniformGrid DockPanel.Dock="Top"
+                     Rows="1">
+            <ItemsControl x:Name="ControllerGroups"
+                          Margin="5">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <GroupBox Header="{Binding Key}">
+                            <ItemsControl Margin="8 8 8 6"
+                                          ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <RadioButton Content="{Binding Description}"
+                                                     IsChecked="{Binding IsChecked}"
+                                                     GroupName="Controller" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </GroupBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <GroupBox Margin="5"
+                      Header="Resolution">
+                <ItemsControl x:Name="Resolutions"
+                              Margin="8 8 8 6">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Content="{Binding Description}"
+                                         IsChecked="{Binding IsChecked}"
+                                         GroupName="Resolution" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </GroupBox>
+        </UniformGrid>
+        <Button DockPanel.Dock="Top"
                 Margin="5"
                 Content="Run"
                 MinWidth="75"
