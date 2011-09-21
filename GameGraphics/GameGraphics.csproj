@@ -89,6 +89,11 @@
     <Compile Include="WpfCommon\GraphicsWindow.xaml.cs">
       <DependentUpon>GraphicsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WpfElements\ElementController.cs" />
+    <Compile Include="WpfElements\ElementSprite.cs" />
+    <Compile Include="WpfElements\ElementView.xaml.cs">
+      <DependentUpon>ElementView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WpfMvvm\MvvmController.cs" />
     <Compile Include="WpfMvvm\MvvmSprite.cs" />
     <Compile Include="WpfMvvm\MvvmView.xaml.cs">
@@ -111,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="WpfCommon\GraphicsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WpfElements\ElementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
