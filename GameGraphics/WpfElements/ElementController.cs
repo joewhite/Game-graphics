@@ -13,6 +13,10 @@ namespace GameGraphics.WpfElements
         {
             get { return Library.Wpf; }
         }
+        public int SortIndex
+        {
+            get { return 20; }
+        }
 
         public void Run(Scene scene, SceneOptions options)
         {

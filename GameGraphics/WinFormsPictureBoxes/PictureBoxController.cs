@@ -13,6 +13,10 @@ namespace GameGraphics.WinFormsPictureBoxes
         {
             get { return Library.WinForms; }
         }
+        public int SortIndex
+        {
+            get { return 10; }
+        }
 
         public void Run(Scene scene, SceneOptions options)
         {

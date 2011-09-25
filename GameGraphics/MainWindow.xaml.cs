@@ -28,7 +28,7 @@ namespace GameGraphics
                 (from type in GetType().Assembly.GetTypes()
                  where !type.IsInterface && typeof(IController).IsAssignableFrom(type)
                  let viewModel = new ControllerViewModel((IController)Activator.CreateInstance(type))
-                 orderby viewModel.Library, viewModel.Description
+                 orderby viewModel.SortIndex, viewModel.Library, viewModel.Description
                  select viewModel).ToList();
             _allControllerViewModels.First().IsChecked = true;
             ControllerGroups.ItemsSource = _allControllerViewModels.GroupBy(viewModel => viewModel.Library);

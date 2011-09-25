@@ -13,6 +13,10 @@ namespace GameGraphics.WinFormsCustomPainting
         {
             get { return Library.WinForms; }
         }
+        public int SortIndex
+        {
+            get { return 20; }
+        }
 
         public void Run(Scene scene, SceneOptions options)
         {

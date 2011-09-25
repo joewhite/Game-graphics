@@ -19,5 +19,9 @@ namespace GameGraphics
         {
             get { return Controller.Library; }
         }
+        public int SortIndex
+        {
+            get { return Controller.SortIndex; }
+        }
     }
 }
