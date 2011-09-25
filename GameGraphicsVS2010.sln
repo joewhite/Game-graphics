@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameGraphics", "GameGraphics\GameGraphics.csproj", "{57932547-DB10-447E-AF32-A921729E1631}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameGraphics.Silverlight", "GameGraphics.Silverlight\GameGraphics.Silverlight.csproj", "{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,16 @@ Global
 		{57932547-DB10-447E-AF32-A921729E1631}.Release|Mixed Platforms.Build.0 = Release|x86
 		{57932547-DB10-447E-AF32-A921729E1631}.Release|x86.ActiveCfg = Release|x86
 		{57932547-DB10-447E-AF32-A921729E1631}.Release|x86.Build.0 = Release|x86
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{35B2BDFA-A878-4442-BBAE-EC0A1BE79880}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

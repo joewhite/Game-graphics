@@ -17,7 +17,7 @@ namespace GameGraphics.WpfElements
 
         public ISprite CreateSprite(string imagePath)
         {
-            var uri = new Uri(imagePath);
+            var uri = new Uri(imagePath.Replace('\\', '/'), UriKind.RelativeOrAbsolute);
             var imageSource = new BitmapImage(uri);
             var image = new Image { Source = imageSource };
             var sprite = new ElementSprite(image, _sceneOptions);

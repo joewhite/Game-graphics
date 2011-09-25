@@ -10,22 +10,28 @@ namespace GameGraphics.Core
     {
         private readonly SceneOptions _options;
         private double _position;
+#if !SILVERLIGHT
         private Stopwatch _runTime = new Stopwatch();
+#endif
         private List<ISprite> _sprites = new List<ISprite>();
 
         public Scene(SceneOptions options)
         {
             _options = options;
+#if !SILVERLIGHT
             CpuUsageSelf = new ProcessCpuUsage(Process.GetCurrentProcess());
             CpuUsageDwm = new ProcessCpuUsage(Process.GetProcessesByName("dwm").FirstOrDefault());
+#endif
         }
 
+#if !SILVERLIGHT
         public ProcessCpuUsage CpuUsageDwm { get; private set; }
         public ProcessCpuUsage CpuUsageSelf { get; private set; }
         public TimeSpan Elapsed
         {
             get { return _runTime.Elapsed; }
         }
+#endif
         public int FrameCount { get; private set; }
         public IView View { get; private set; }
 
@@ -96,9 +102,11 @@ namespace GameGraphics.Core
         }
         public void Update(TimeSpan elapsed)
         {
+#if !SILVERLIGHT
             _runTime.Start();
             CpuUsageSelf.Initialize();
             CpuUsageDwm.Initialize();
+#endif
             ++FrameCount;
 
             _position += elapsed.TotalSeconds * 3;
