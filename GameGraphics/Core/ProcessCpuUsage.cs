@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace GameGraphics.Core
 {
@@ -7,7 +8,7 @@ namespace GameGraphics.Core
     {
         private bool _initialized;
         private double _initialProcessorTime;
-        private readonly Process _process;
+        private Process _process;
         private readonly int _processorCount;
         private Stopwatch _stopwatch;
 
@@ -31,8 +32,16 @@ namespace GameGraphics.Core
             get
             {
                 if (_process == null)
-                    return 0;
-                return _process.TotalProcessorTime.TotalSeconds / _processorCount;
+                    return double.NaN;
+                try
+                {
+                    return _process.TotalProcessorTime.TotalSeconds / _processorCount;
+                }
+                catch (Win32Exception)
+                {
+                    _process = null;
+                    return double.NaN;
+                }
             }
         }
 
