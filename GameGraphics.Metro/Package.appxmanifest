@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="6a638694-6859-4f19-8ac1-ca6eee959a0b" Publisher="CN=Joe" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>GameGraphics.Metro</DisplayName>
+    <PublisherDisplayName>Joe</PublisherDisplayName>
+    <Logo>Images\StoreLogo.png</Logo>
+    <Description>GameGraphics.Metro</Description>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="gamegraphics.metro.exe" EntryPoint="GameGraphics.Metro.App">
+      <VisualElements DisplayName="GameGraphics.Metro" Logo="Images\Logo.png" SmallLogo="Images\SmallLogo.png" Description="GameGraphics.Metro" ForegroundText="light" BackgroundColor="#222222" InitialRotationPreference="portrait">
+        <DefaultTile />
+        <SplashScreen Image="Images\SplashScreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

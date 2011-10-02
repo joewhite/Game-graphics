@@ -1,4 +1,8 @@
-﻿using System.Windows.Controls;
+﻿#if WINRT
+using Windows.UI.Xaml.Controls;
+#else
+using System.Windows.Controls;
+#endif
 using GameGraphics.Core;
 
 namespace GameGraphics.WpfElements

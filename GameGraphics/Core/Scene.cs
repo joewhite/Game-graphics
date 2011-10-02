@@ -18,15 +18,17 @@ namespace GameGraphics.Core
         public Scene(SceneOptions options)
         {
             _options = options;
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !WINRT
             CpuUsageSelf = new ProcessCpuUsage(Process.GetCurrentProcess());
             CpuUsageDwm = new ProcessCpuUsage(Process.GetProcessesByName("dwm").FirstOrDefault());
 #endif
         }
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !WINRT
         public ProcessCpuUsage CpuUsageDwm { get; private set; }
         public ProcessCpuUsage CpuUsageSelf { get; private set; }
+#endif
+#if !SILVERLIGHT
         public TimeSpan Elapsed
         {
             get { return _runTime.Elapsed; }
@@ -37,7 +39,7 @@ namespace GameGraphics.Core
 
         private ISprite CreateSprite(string fileName, double x = 0, double y = 0)
         {
-            var sprite = View.CreateSprite(Path.Combine(_options.ImageDirectory, fileName));
+            var sprite = View.CreateSprite(_options.ImageDirectory + "\\" + fileName);
             sprite.X = x;
             sprite.Y = y;
             return sprite;
@@ -104,6 +106,8 @@ namespace GameGraphics.Core
         {
 #if !SILVERLIGHT
             _runTime.Start();
+#endif
+#if !SILVERLIGHT && !WINRT
             CpuUsageSelf.Initialize();
             CpuUsageDwm.Initialize();
 #endif
